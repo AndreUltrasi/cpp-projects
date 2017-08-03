@@ -4,8 +4,8 @@
 #include <stdio.h>
 
 //**FSFC ("First Served First Come" ou FIFO "First In First Out")**
-//O primeiro elemento a ser inserido È o primeiro a ser retirado,
-//È um algoritmo de escalonamento n„o preemptivo e que entrega a CPU os processos pela ordem de chegada
+//O primeiro elemento a ser inserido √© o primeiro a ser retirado,
+//√© um algoritmo de escalonamento n√£o preemptivo e que entrega a CPU os processos pela ordem de chegada
 void fifo() {
 	int duracao[10], espera[10];
 	int qtdProcessos, i;
@@ -19,7 +19,7 @@ void fifo() {
 		scanf_s("%d", &duracao[i]);
 	}
 
-	espera[0] = 0; //espera do processo 1 È sempre 0
+	espera[0] = 0; //espera do processo 1 √© sempre 0
 
 	//Calcula o tempo de espera de cada processo
 	//O tempo de resposta do anterior eh a espera do proximo
@@ -34,7 +34,7 @@ void fifo() {
 		printf("P[%d]\t |%d\t |%d\t|%d\n", i + 1, duracao[i], espera[i] , espera[i + 1]);
 	}
 
-	//Calcula os tempos mÈdios 
+	//Calcula os tempos m√©dios 
 	for (i = 0; i < qtdProcessos; i++) {
 		medioEspera = medioEspera + espera[i];
 		medioResposta = medioResposta + espera[i + 1];
@@ -59,8 +59,3 @@ void fifo() {
 int main() {
 	while (1) { fifo(); }
 }
-/*
-1∫ Executar o cÛdigo com quaisquer valores
-2∫ Mostrar como o algoritmo funciona(gantt Chart)
-3∫ Explicar os tempos de espera, resposta e tempos mÈdios
-4∫ Explicar o cÛdigo com o programa aberto*/
