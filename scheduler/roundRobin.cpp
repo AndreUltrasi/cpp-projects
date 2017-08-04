@@ -7,7 +7,7 @@ int ganttP[50], ganttStartTime[50], ganttRemaining[50];
 
 /*
 o flag indica se o processos terminou ou nao. Quando o atual processo executando
-acaba no atual quantum, flag vira 1. Ent„o no final ele eh checado se flag eh 1 ou 0,
+acaba no atual quantum, flag vira 1. Ent√£o no final ele eh checado se flag eh 1 ou 0,
 se eh 0, isso significa que o processo terah que rodar mais ciclos, caso flag for 1, isso
 significa que o processo terminou e ele eh mostrado no console.*/
 void roundRobin() {
@@ -31,15 +31,15 @@ void roundRobin() {
 
 	printf("\n\nProcesso|Tempo de Espera|Tempo de Resposta\n");
 
-	//O loop comeÁa com tempo = 0, e o primeiro processa a rodar eh decidido
+	//O loop come√ßa com tempo = 0, e o primeiro processa a rodar eh decidido
 	//pela variavel i que inicia como 0, e flag = 0 indica que nenhum processo terminou
 	for (tempo = 0, i = 0, flag = 0; restante != 0;) {
 
-		/*… checado se o processo tem tempo restante menor que o quantum.
-		Se sim, ent„o o tempo eh incrementado e o flag eh definido para 1, o que mostra que o atual
-		processo executando ja foi completado, e o execucao[i] eh definido para 0 para dizer que n„o resta
+		/*√â checado se o processo tem tempo restante menor que o quantum.
+		Se sim, ent√£o o tempo eh incrementado e o flag eh definido para 1, o que mostra que o atual
+		processo executando ja foi completado, e o execucao[i] eh definido para 0 para dizer que n√£o resta
 		mais tempo a ser executado do mesmo processo. 
-		execucao[i] > 0 È necess·rio pra saber o processo aindapossui algo a ser executado*/
+		execucao[i] > 0 √© necess√°rio pra saber o processo aindapossui algo a ser executado*/
 		if (execucao[i] <= quantum && execucao[i] > 0) {
 			tempo += execucao[i];
 			execucao[i] = 0;
@@ -53,10 +53,10 @@ void roundRobin() {
 
 		}
 
-		/*Se o processo tem tempo restante maior que o quantum, ent„o apenas o tempo eh aumentado
+		/*Se o processo tem tempo restante maior que o quantum, ent√£o apenas o tempo eh aumentado
 		pelo quantum. E do execucao[i] eh retirado um quantum, ou seja, o processo executou por um quantum de tempo mais
-		ainda n„o acabou (eh preciso checar se eh maior que 0 para n„o cair do if para o else if)
-		execucao[i] > 0 È necess·rio pra saber o processo ainda possui algo a ser executado*/
+		ainda n√£o acabou (eh preciso checar se eh maior que 0 para n√£o cair do if para o else if)
+		execucao[i] > 0 √© necess√°rio pra saber o processo ainda possui algo a ser executado*/
 		else if (execucao[i] > quantum) {
 			execucao[i] -= quantum;
 			tempo += quantum;
@@ -68,8 +68,8 @@ void roundRobin() {
 			ganttStartTime[j++] = tempo;
 		}
 
-		/*… checado se o processo ja acabou ou se ja foi completado antes.Se ja foi
-		completado, ent„o seus tempo de espera e de resposta s„o mostrados*/
+		/*√â checado se o processo ja acabou ou se ja foi completado antes.Se ja foi
+		completado, ent√£o seus tempo de espera e de resposta s√£o mostrados*/
 		if (execucao[i] == 0 && flag == 1) {
 
 			//restante se refere a quantidade restante de processos
@@ -82,8 +82,8 @@ void roundRobin() {
 			flag = 0;
 		}
 
-		/*Checa se o contador de processos chegou ao fim. Se sim, ent„o o contador eh definido denovo para 0 
-		, e ent„o, o loop eh reiniciado(para voltar a checar se os processos ja acabaram seu tempo de execuÁ„o).
+		/*Checa se o contador de processos chegou ao fim. Se sim, ent√£o o contador eh definido denovo para 0 
+		, e ent√£o, o loop eh reiniciado(para voltar a checar se os processos ja acabaram seu tempo de execu√ß√£o).
 		Se o contador nao chegou ao fim, eh apenas incrementado em 1 (assim passa para o processo seguinte).*/
 		if (i == qtdProcessos - 1)
 			i = 0;
