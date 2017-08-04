@@ -21,7 +21,8 @@ int main() {
 		menuPrincipal();
 		scanf("%d", &opcao);
 		system("cls");
-		if (opcao==1){
+		switch (opcao) {
+		case 1:
 			do {
 				system("cls");
 				menuCandidatos();
@@ -30,7 +31,7 @@ int main() {
 				switch (candidato) {
 				case 1:
 					printf("Candidato %d\n", candidato);
-					for (int i=0,x=0;x!=4;i++) {
+					for (int i = 0, x = 0;x != 4;i++) {
 						printf("1 - Votos Totais Colégio A: %d\n", colegioA1);
 						printf("2 - Votos Totais Colégio B: %d\n", colegioB1);
 						printf("3 - Votos Totais Colégio C: %d\n", colegioC1);
@@ -60,7 +61,7 @@ int main() {
 					break;
 				case 2:
 					printf("Candidato %d\n", candidato);
-					for (int i = 0, x=0;x != 4;i++) {
+					for (int i = 0, x = 0;x != 4;i++) {
 						printf("1 - Votos Totais Colégio A: %d\n", colegioA2);
 						printf("2 - Votos Totais Colégio B: %d\n", colegioB2);
 						printf("3 - Votos Totais Colégio C: %d\n", colegioC2);
@@ -89,7 +90,7 @@ int main() {
 					break;
 				case 3:
 					printf("Candidato %d\n", candidato);
-					for (int i = 0, x=0;x != 4;i++) {
+					for (int i = 0, x = 0;x != 4;i++) {
 						printf("1 - Votos Totais Colégio A: %d\n", colegioA3);
 						printf("2 - Votos Totais Colégio B: %d\n", colegioB3);
 						printf("3 - Votos Totais Colégio C: %d\n", colegioC3);
@@ -118,7 +119,7 @@ int main() {
 					break;
 				case 4:
 					printf("Candidato %d\n", candidato);
-					for (int i = 0, x=0;x != 4;i++) {
+					for (int i = 0, x = 0;x != 4;i++) {
 						printf("1 - Votos Totais Colégio A: %d\n", colegioA4);
 						printf("2 - Votos Totais Colégio B: %d\n", colegioB4);
 						printf("3 - Votos Totais Colégio C: %d\n", colegioC4);
@@ -147,7 +148,7 @@ int main() {
 					break;
 				case 5:
 					printf("Candidato %d\n", candidato);
-					for (int i = 0, x=0;x != 4;i++) {
+					for (int i = 0, x = 0;x != 4;i++) {
 						printf("1 - Votos Totais Colégio A: %d\n", colegioA5);
 						printf("2 - Votos Totais Colégio B: %d\n", colegioB5);
 						printf("3 - Votos Totais Colégio C: %d\n", colegioC5);
@@ -177,14 +178,13 @@ int main() {
 
 				}
 			} while (candidato != 6);
-		}
-		else if(opcao==2){
+		case 2:
 			int total1 = colegioA1 + colegioB1 + colegioC1;
 			int total2 = colegioA2 + colegioB2 + colegioC2;
 			int total3 = colegioA3 + colegioB3 + colegioC3;
 			int total4 = colegioA4 + colegioB4 + colegioC4;
 			int total5 = colegioA5 + colegioB5 + colegioC5;
-			int total[5] = {total1, total2,total3, total4, total5 };
+			int total[5] = { total1, total2,total3, total4, total5 };
 			int totalPrimeiro = 0, totalSegundo = 0;
 			int primeiro = 0, segundo = 0;
 			printf("\t\tColégio A\tColégio B\tColégio C\tTotal\n");
@@ -201,22 +201,23 @@ int main() {
 					primeiro = i + 1;
 				}
 				else if (total[i] > totalSegundo) {
-					segundo = i+1;
+					segundo = i + 1;
 					totalSegundo = total[i];
 				}
 			}
 			int totalvalor = total1 + total2 + total3 + total4 + total5 + 1;
-			int compara = (totalvalor - total[primeiro-1]);
-			if (totalPrimeiro > compara ) {
-				printf("O candidado %d é o campeão !\n",primeiro);
+			int compara = (totalvalor - total[primeiro - 1]);
+			if (totalPrimeiro > compara) {
+				printf("O candidado %d é o campeão !\n", primeiro);
 				system("pause");
 				exit(0);
-			}else{
-				int c1,c2;
+			}
+			else {
+				int c1, c2;
 				printf("Os candidados %d e %d foram para o 2º turno\n", primeiro, segundo);
 				printf("Insira o total de votos do 2º turno do candidato %d: ", primeiro);
 				scanf("%d", &c1);
-				printf("Insira o total de votos do 2º turno do candidato %d: ",segundo);
+				printf("Insira o total de votos do 2º turno do candidato %d: ", segundo);
 				scanf("%d", &c2);
 				if (c2 > c1) {
 					printf("O candidato %d é o campeão !\n", segundo);
@@ -228,8 +229,11 @@ int main() {
 				exit(0);
 			}
 		}
-		else if (opcao==3){
-	    exit(0);
-	    }	
-	} while (1==1);
-}
+	} while (opcao != 3);
+}
+/*Após o término das apurações, o sistema deverá possibilitar apontar por colégio eleitoral o total de votos. O sistema
+deverá selecionar os dois melhores colocados na classificação geral e exibir a apuração do segundo turno para caso o
+campeão tenha total inferior a soma de todos os outros candidatos +1. Caso os candidatos tenha essa quantidade de votos,
+declarar o candidato como vencedor.A apuração de votos do segundo turno deverá seguir as mesmas regras do primeiro turno,
+porem com apenas dois candidatos.
+*/
