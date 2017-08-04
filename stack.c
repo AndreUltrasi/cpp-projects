@@ -10,44 +10,57 @@ de um macro e atruibui-lo como parametro*/
 int stack[CAPACITY];
 int top = -1;
 
-int isFull(){
-	if (top == CAPACITY -1){
+// checa se a pilha esta cheia
+int isFull() {
+	if (top == CAPACITY - 1) {
 		return 1;
-	} else {
+	}
+	else {
 		return 0;
 	}
 }
-int push(int ele){
-	if(isFull()){
-	    printf("stack is full\n");
-	} else {
+
+// insere um elemento "ele" na pilha
+void push(int ele) {
+	if (isFull()) {
+		printf("stack is full\n");
+	}
+	else {
 		/*top becomes 0 if none element is
 		inside*/
 		top++;
-		stack[top]=ele;
+		stack[top] = ele;
 		printf("element %d inserted \n", ele);
 	}
 }
-	
-int pop(){
+
+// checa se a pilha esta vazia
+int isEmpty() {
+	if (top == -1) {
+		return 1;
+	}
+	else {
+		return 0;
+	}
+}
+
+// remove o último item da pilha
+int pop() {
 	int ele;
-	if (isEmpty()){
+	if (isEmpty()) {
 		printf("stack is empty");
-	}else{
+		return 1;
+	}
+	else {
 		ele = stack[top];
 		top--;
 		return ele;
 	}
 }
-
-int isEmpty(){
-	if (top == -1){
-		return 1;
-	} else {
-		return 0;
-	}
-}
-int peek()	
-int main(){
-	
+int main() {
+	pop();
+	printf("\n");
+	push(4);
+	pop();
+	system("pause");
 }
